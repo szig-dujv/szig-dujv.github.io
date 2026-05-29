@@ -30,7 +30,7 @@
 	--accent-auto: #10b981;
 	--separator: #e2e8f0;
 	/* Logo */
-	--logo-image: url(/szig/res/logo/SzIG.svg);
+	--logo-image: url(/res/logo/SzIG.svg);
 	--logo-bg: none;
 	--mask-logo: none;
 }
@@ -66,7 +66,7 @@ body[data-theme="dark"] {
 	/* Logo */
 	--logo-image: none;
 	--logo-bg: #f1f5f9;
-	--mask-logo: url(/szig/res/logo/SzIG_monochrome_full.svg) no-repeat center;
+	--mask-logo: url(/res/logo/SzIG_monochrome_full.svg) no-repeat center;
 }
 
 * {
