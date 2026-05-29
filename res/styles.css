@@ -83,6 +83,10 @@ body {
 	overflow-x: hidden;
     }
 
+.black {
+    display: none;
+}
+
 a {
     color: var(--primary-color);
     text-decoration: none;
