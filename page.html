@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+	<meta property="og:description" content="Olvassa el a legfrissebb híreinket és bejegyzéseinket.">
+    <meta property="og:image" content="https://ujvaros.github.io/szig/res/szig-share-logo.jpg">
+    <title>Oldal | Dunaújvárosi Széchenyi István Gimnázium</title>
+	<meta content="#324c96" name="theme-color">
+	<meta content="#324c96" name="msapplication-TileColor">
+    <style>
+        .page-content { font-size: 1.1rem; line-height: 1.6; }
+        .page-content img { max-width: 100%; height: auto; border-radius: 16px; margin: 1rem 0; }
+        .page-content p { margin-bottom: 1.2rem; }
+        .back-link { display: inline-block; margin-top: 2rem; color: #e67e22; text-decoration: none; font-weight: 600; }
+        .loading, .error { text-align: center; padding: 3rem; font-size: 1.2rem; }
+        .error { color: #b91c1c; background: #ffe6e5; border-radius: 24px; }
+    </style>
+	<link rel="stylesheet" href="/szig/res/styles.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <script src="/szig/res/HeaderFooter.js"></script>
+	<my-header></my-header>
+<div id="news-container" class="post-grid">
+<div class="container" id="post-container">
+    <div class="loading">⏳ Oldal betöltése...</div>
+</div>
+</div>
+<script src="/szig/res/nav-menu-button.js"></script>
+<script src="/szig/res/theme-toggle.js"></script>
+
+<script>
+    function decodeHtmlEntities(str) {
+        const textarea = document.createElement('textarea');
+        textarea.innerHTML = str;
+        return textarea.value;
+    }
+
+    function escapeHtml(str) {
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        });
+    }
+
+    async function loadPage() {
+        const urlParams = new URLSearchParams(window.location.search);
+        let pageId = urlParams.get('id');
+        let pageSlug = urlParams.get('slug');
+
+        if (!pageId && !pageSlug) {
+            document.getElementById('post-container').innerHTML = '<div class="error">❌ Érvénytelen vagy hiányzó oldal azonosító.</div>';
+            return;
+        }
+
+        const container = document.getElementById('post-container');
+        container.innerHTML = '<div class="loading">⏳ Oldal betöltése...</div>';
+
+        try {
+            let url;
+            if (pageId) {
+                url = `https://szig-dujv.hu/wp-json/wp/v2/pages/${pageId}`;
+            } else {
+                url = `https://szig-dujv.hu/wp-json/wp/v2/pages?slug=${pageSlug}`;
+            }
+
+            const response = await fetch(url);
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+            let page;
+            if (pageSlug) {
+                const pages = await response.json();
+                if (!pages.length) throw new Error('Oldal nem található');
+                page = pages[0];
+            } else {
+                page = await response.json();
+            }
+
+            let title = decodeHtmlEntities(page.title.rendered).trim();
+            if (title === '') title = '(Cím nélküli oldal)';
+
+            let content = page.content.rendered;
+            content = decodeHtmlEntities(content);
+            // Itt opcionálisan YouTube és PDF kezelés (átvehető a post.html-ből)
+
+            let date = new Date(page.date);
+            let formattedDate = date.toLocaleDateString('hu-HU', { year: 'numeric', month: 'long', day: 'numeric' });
+
+            container.innerHTML = `
+                <div class="post-header">
+                    <h1 class="post-title">${escapeHtml(title)}</h1>
+                    <span class="post-meta">📅 Utolsó frissítés: ${formattedDate}</span>
+                </div>
+                <div class="post-content">
+                    ${content}
+                </div>
+            `;
+        } catch (error) {
+            console.error('Hiba:', error);
+            container.innerHTML = `<div class="error">❌ Hiba történt: ${error.message}</div>`;
+        }
+    }
+
+    loadPage();
+</script>
+  <my-footer></my-footer>
+</body>
+</html>

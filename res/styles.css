@@ -1,0 +1,904 @@
+/* Alapértelmezett (light) */
+:root {
+	--primary-color: #324c96;
+	--active-bg: #d9d9d9;
+	--s-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+	--c-shadow: 0 12px 24px -12px rgb(0 0 0 / 10%);
+	--dd-background: #fafafa;
+	--dd-border: #f2f2f2;
+	--bg-body: #324c96;
+	--bg-news: #b3c0e6;
+	--bg-nav: #FFFFFF;
+	--b-classroom: #EDF2F7;
+	--text-classroom: #0f172a;
+	--text-primary: #0f172a;
+	--text-secondary: #334155;
+	--text-top-bar: #FFFFFF;
+	--card-bg: #ffffff;
+	--fcard-bg: #ffb3b3;
+	--card-border: #e2e8f0;
+	--fcard-border: #cc0000;
+	--shadow-sm: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+	--shadow-md: 0 20px 25px -12px rgba(0, 0, 0, 0.08);
+	--switch-bg: #eef2ff;
+	--switch-border: #cbd5e1;
+	--btn-hover-bg: rgba(100, 116, 139, 0.1);
+	--active-indicator: #3b82f6;
+	--icon-inactive: #94a3b8;
+	--accent-light: #f59e0b;
+	--accent-dark: #8b5cf6;
+	--accent-auto: #10b981;
+	--separator: #e2e8f0;
+	/* Logo */
+	--logo-image: url(/szig/res/logo/SzIG.svg);
+	--logo-bg: none;
+	--mask-logo: none;
+}
+
+/* Sötét mód felülírás */
+body[data-theme="dark"] {
+	--primary-color: #8ca1d9;
+	--active-bg: #333333;
+	--s-shadow: 0 12px 24px rgb(255 255 255 / 8%);
+	--c-shadow: 0 12px 24px -12px rgb(255 255 255 / 10%);
+	--dd-background: #141414;
+	--dd-border: #0d0d0d;
+	--bg-body: #324c96;
+	--bg-news: #1a284c;
+	--bg-nav: #1c1c1c;
+	--b-classroom: #404040;
+	--text-classroom: #f1f5f9;
+	--text-primary: #f1f5f9;
+	--text-secondary: #cbd5e1;
+	--text-top-bar: #f1f5f9;
+	--card-bg: #1c1c1c;
+	--fcard-bg: #660000;
+	--card-border: #334155;
+	--fcard-border: #660000;
+	--shadow-sm: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+	--shadow-md: 0 20px 25px -12px rgba(0, 0, 0, 0.4);
+	--switch-bg: #1e293b;
+	--switch-border: #475569;
+	--btn-hover-bg: rgba(148, 163, 184, 0.15);
+	--active-indicator: #60a5fa;
+	--icon-inactive: #64748b;
+	--separator: #334155;
+	/* Logo */
+	--logo-image: none;
+	--logo-bg: #f1f5f9;
+	--mask-logo: url(/szig/res/logo/SzIG_monochrome_full.svg) no-repeat center;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+	-webkit-tap-highlight-color: transparent;
+    }
+body {
+	background-color: var(--bg-news);
+	color: var(--text-primary);
+    font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+    padding:0rem;
+	overflow-x: hidden;
+    }
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+	}
+h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #0a2b3e;
+    }
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1rem;
+	margin-top: 1rem;
+    margin-bottom: 2rem;
+	margin-left: 1rem;
+	margin-right: 1rem;
+    }
+.post-grid {
+    display: grid;
+	margin-left: 1rem;
+	margin-right: 1rem;
+}
+.card {
+	background: var(--card-bg);
+	border-radius: 28px;
+	overflow: hidden;
+	box-shadow: var(--c-shadow);
+	transition: transform 0.2s ease;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+}
+.card-featured {
+	border: 2px solid var(--fcard-border);
+	background: var(--fcard-bg);
+}
+.featured-badge {
+	position: absolute;
+	top: 16px;
+	left: 16px;
+	background: var(--fcard-border);
+	color: white;
+	padding: 4px 8px;
+	border-radius: 12px;
+	font-size: 12px;
+	font-weight: bold;
+	z-index: 2;
+	-webkit-user-select: none; /* Safari */
+	-moz-user-select: none;    /* Firefox */
+	-ms-user-select: none;     /* Internet Explorer/Edge */
+	user-select: none;         /* Modern böngészők */
+}
+.card:hover {
+	transform: translateY(-6px);
+	box-shadow: var(--s-shadow);
+}
+.image-container {
+	width: 100%;
+	height: 200px;
+	background: #ddd;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.card-featured .card-content {
+	padding-bottom: calc(1.5rem - 2px);
+    padding-left: calc(1.5rem - 2px);
+    padding-right: calc(1.5rem - 2px);
+}
+.card-featured .image-container {
+	height: 198px;
+}
+.card img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.no-img-fallback {
+	background: linear-gradient(135deg, #2c6e9e, #1a4b6e);
+	color: white;
+	font-weight: bold;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	height: 100%;
+	width: 100%;
+	-webkit-user-select: none; /* Safari */
+	-moz-user-select: none;    /* Firefox */
+	-ms-user-select: none;     /* Internet Explorer/Edge */
+	user-select: none;         /* Modern böngészők */
+}
+.no-img-logo {
+	position: absolute;
+    height: 180px;
+    width: calc(100% - 20px);
+    opacity: 0.25;
+    background-image: var(--logo-image);
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: contain;
+    background-color: var(--logo-bg);
+    -webkit-mask: var(--mask-logo);
+    mask: var(--mask-logo);
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    mask-position: right;
+}
+.no-img-text {
+	z-index: 1;
+}
+.card-content {
+	padding: 1.5rem;
+	flex: 1;
+}
+.card h2 {
+	font-size: 1.4rem;
+	margin-bottom: 0.75rem;
+}
+.card h2 a {
+	text-decoration: none;
+	color: var(--text-primary);
+	transition: color 0.2s;
+}
+.card h2 a:hover {
+	color: var(--primary-color);
+}
+.date {
+	font-size: 0.85rem;
+	color: var(--text-secondary);
+	margin-bottom: 1rem;
+	display: block;
+	-webkit-user-select: none; /* Safari */
+	-moz-user-select: none;    /* Firefox */
+	-ms-user-select: none;     /* Internet Explorer/Edge */
+	user-select: none;         /* Modern böngészők */
+}
+.excerpt {
+	color: var(--text-secondary);
+	line-height: 1.4;
+}
+.loading, .error {
+	text-align: center;
+	font-size: 1.2rem;
+	padding: 2rem;
+}
+.error {
+	background: #ffe6e5;
+	color: #b91c1c;
+	border-radius: 20px;
+}
+.pagination {
+	display: flex;
+	justify-content: center;
+	gap: 1rem;
+	margin-left: 1rem;
+	margin-right: 1rem;
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+}
+.page-btn {
+	display: inline-block;
+	padding: 10px 20px;
+	background: var(--bg-nav);
+	border: 2px solid var(--primary-color);
+	border-radius: 40px;
+	color: var(--primary-color);
+	font-weight: 600;
+	text-decoration: none;
+	transition: 0.2s;
+}
+.page-btn:hover {
+	background: var(--primary-color);
+	color: white;
+}
+.page-btn.disabled {
+	opacity: 0.4;
+	pointer-events: none;
+	border-color: #aaa;
+	color: #aaa;
+}
+
+/* ... További stílusok a cikkhez ... */
+.post-header {
+	margin-bottom: 2rem;
+	border-bottom: 2px solid #eef2f5;
+	padding-bottom: 1rem;
+}
+.post-title { 
+	font-size: 2.2rem; 
+	margin-bottom: 0.5rem; 
+	color: var(--primary-color);
+}
+.post-meta { 
+	color: var(--text-secondary); 
+	font-size: 0.9rem; 
+	margin-bottom: 1.5rem; 
+	display: block;
+}
+.post-content {
+	font-size: 1.1rem;
+	line-height: 1.6;
+}
+.post-content img {
+	max-width: 100%;
+	height: auto;
+	border-radius: 16px;
+	margin: 1rem 0;
+}
+.post-content p {
+	margin-bottom: 1.2rem;
+}
+.back-link {
+	display: inline-block;
+	margin-bottom: 2rem;
+	color: #dd3832;
+	text-decoration: none;
+	font-weight: 600;
+}
+.loading, .error { text-align: center; padding: 3rem; font-size: 1.2rem; }
+.error { color: #b91c1c; background: #ffe6e5; border-radius: 24px; }
+@media (max-width: 700px) {
+	div#post-container {
+		padding: 1.5rem; 
+	}
+	.post-title { 
+		font-size: 1.8rem;
+	}
+}
+.wp-block-image{
+	display: grid;
+    justify-content: center;
+}
+	/* Top Bar */
+.top-bar {
+	background-color: var(--bg-body);
+	color: var(--text-top-bar);
+	font-size: 0.875rem;
+	padding: 0rem 0;
+	position: relative;
+	z-index: 20;
+}
+
+.top-bar .container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+}
+		
+.elerhetosegek {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-align-items: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	justify-content: space-between;
+	padding: 0 1rem;
+}
+button#closeMenuBtn {
+    height: 40px;
+    width: 40px;
+    font-size: 12px;
+    background: white;
+    border-radius: 100%;
+    box-shadow: 0 8px 10px 0 rgba(10, 31, 68, 0.1),0 0 1px 0 rgba(10, 31, 68, 0.08);
+    border: 1px solid rgba(23, 62, 103, 0.2);
+    cursor: pointer;
+    margin: 0.5rem;
+}
+.nav-menu-button {
+	display:none;
+	position: sticky;
+	top: 12px;
+	z-index: 9999;
+}
+button.nav-menu-b {
+	border: 1px solid transparent;
+	height: 40px;
+	width: 40px;
+	font-size: 12px;
+	background: white;
+	border-radius: 100%;
+	box-shadow: var(--s-shadow);
+	border: 1px solid rgba(23, 62, 103, 0.2);
+	cursor: pointer;
+	position: fixed;
+	top: 12px;
+	left: 12px;
+}
+svg.nav-menu-icon {
+	fill: var(--bg-body);
+}
+/* ----- LEGÖRDÜLŐ ALMENÜ (SUBMENU) ----- */
+.dropdown-menu {
+	position: absolute;
+	top: 125%;
+	background: var(--dd-background);
+	list-style: none;
+	min-width: 220px;
+	border-radius: 1rem;
+	padding: 4px;
+	box-shadow: var(--s-shadow);
+	opacity: 0;
+	visibility: hidden;
+	transform: translateY(-8px);
+	transition: all 0.2s ease;
+	z-index: 1050;
+	border: 1px solid var(--dd-border);
+}
+.menu-items {
+    overflow-y: auto;
+    max-height: calc(90vh - 296px);
+}
+.nav-links li {
+	position: relative
+}
+/* Mutasd a dropdownot hoverre (asztali) */
+.nav-links li:hover > .dropdown-menu {
+	opacity: 1;
+	visibility: visible;
+	transform: translateY(0);
+}
+
+.dropdown-menu li a {
+	display: block;
+	border-radius: 12px;
+	padding: 0.5rem 1.2rem;
+	border-bottom: none;
+	color: var(--text-secondary);
+	font-weight: 400;
+	font-size: 0.9rem;
+}
+
+/* Nyíl ikon a dropdownot tartalmazó linkekhez */
+.has-submenu > a::after {
+	content: "\f078";
+	font-family: "Font Awesome 6 Free";
+	font-weight: 600;
+	font-size: 0.7rem;
+	margin-left: 0.5rem;
+	display: inline-block;
+	transition: transform 0.2s;
+}
+
+/* Hover esetén a nyíl elfordulhat (plusz vizuális effekt) */
+.has-submenu:hover > a::after {
+	transform: rotate(180deg);
+}
+
+li.has-submenu a {
+	display: flex;
+    width: 100%;
+}
+
+.nav-actions {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.social {
+	padding: 1rem 1rem;
+}
+.top-gomb {
+	display: -webkit-inline-box;
+	display: -webkit-inline-flex;
+	display: -ms-inline-flexbox;
+	display: inline-flex;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-ms-appearance: none;
+	appearance: none;
+	-webkit-align-items: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	position: relative;
+	white-space: nowrap;
+	vertical-align: middle;
+	outline: 2px solid transparent;
+	outline-offset: 2px;
+	line-height: 1.2;
+	border: 1px solid transparent;
+	height: 32px;
+	min-width: 32px;
+	font-size: 12px;
+	padding: 0px;
+	background: #dddedf;
+	border-radius: 100px;
+	transition: 200ms;
+}
+div#theme-switch {
+    width: 114px;
+}
+.top-gomb:hover {
+	background: #CBD5E0;;
+}
+.top-gomb#mode {
+	color: blue;
+}
+
+.contact-info {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1.5rem;
+}
+
+.contact-info span i, .contact-info a i {
+	margin-right: 0.5rem;
+	font-size: 0.875rem;
+	color: #cddfd6;
+}
+
+.contact-info a {
+	color: white;
+	text-decoration: none;
+	transition: opacity 0.2s;
+}
+
+.contact-info a:hover {
+	opacity: 0.8;
+	text-decoration: underline;
+}
+
+.language a {
+	color: white;
+	text-decoration: none;
+	font-size: 0.875rem;
+	background: rgba(255, 255, 255, 0.15);
+	padding: 0.25rem 0.75rem;
+	border-radius: 2rem;
+	transition: background 0.2s;
+}
+
+.language a:hover {
+	background: rgba(255, 255, 255, 0.25);
+}
+
+/* Main Navigation */
+.main-nav {
+	background-color: var(--bg-nav);
+	color: #FFFFFF;
+	box-shadow: 0 3px 4px 0 rgba(10, 31, 68, 0.1),0 0 1px 0 rgba(10, 31, 68, 0.08);
+	position: sticky;
+	top: 0;
+	z-index: 30;
+	border-bottom: 1px solid var(--border-light);
+	margin-bottom: 1rem;
+	padding: 0.5rem;
+}
+
+.logo {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	background: var(--bg-nav);
+	flex-wrap: wrap;
+	box-shadow: 0 3px 4px 0 rgba(10, 31, 68, 0.1), 0 0 1px 0 rgba(10, 31, 68, 0.08);
+}
+
+.logo-img {
+	width: 200px;
+	height: 200px;
+	background-image: var(--logo-image);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	background-color: var(--logo-bg);
+	-webkit-mask: var(--mask-logo);
+	mask: var(--mask-logo);
+	-webkit-mask-size: contain;
+	mask-size: contain;
+	margin: 1rem;
+}
+
+.logo-text h1 {
+	font-size: 150%;
+	font-weight: 700;
+	color: var(--primary-green);
+	line-height: 1.3;
+	text-align: center;
+}
+
+.logo-text p {
+	font-size: 0.7rem;
+	color: var(--text-muted);
+	letter-spacing: 0.3px;
+}
+
+.nav-links {
+	display: flex;
+	-webkit-box-flex-wrap: wrap;
+	-webkit-flex-wrap: wrap;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
+	list-style: none;
+}
+
+.nav-links a {
+	text-decoration: none;
+	transition: color 0.2s;
+	font-size: 0.95rem;
+	border-radius: 0.5rem;
+}
+
+a.nav-b {
+	display: flex;
+    color: var(--text-primary);
+    padding: 4px 8px;
+    height: 32px;
+    justify-content: center;
+    align-items: center;
+	border-radius: 0.5rem;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+	color: var(--primary-color);
+	background: var(--active-bg);
+}
+li {
+	font-weight: 600;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.G-class {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 32px;
+	min-width: 32px;
+	font-size: 12px;
+	padding: 4px 8px;
+	background: var(--b-classroom);
+	color: var(--text-classroom);
+	font-weight: 700;
+	fill: var(--primary-color);
+}
+.G-class:hover {
+    background: var(--active-bg);
+    color: var(--primary-color);
+	fill: var(--primary-color);
+}
+.nav-kreta {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 32px;
+	min-width: 32px;
+	font-size: 12px;
+	padding: 4px 8px;
+	background: var(--primary-color);
+	color: white;
+	font-weight: 700;
+	fill: white;
+}
+.nav-kreta:hover {
+    background: var(--active-bg);
+    color: var(--primary-color);
+    fill: var(--primary-color);
+}
+.LMS-logo{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding:0 4px 0 0;
+	-webkit-flex-shrink: 0;
+	-ms-flex-negative: 0;
+	flex-shrink: 0;
+	transition: all 0.2s;
+}
+									
+	/* Footer */
+footer {
+	background-color: var(--bg-body);
+	color: #e6ede8;
+	padding: 1rem 1rem 1.5rem 1rem;
+}
+
+.footer-grid {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 2rem;
+	justify-content: space-between;
+	margin-bottom: 2rem;
+}
+
+.footer-col {
+	flex: 1;
+	min-width: 180px;
+}
+
+.footer-col h4 {
+	font-size: 1.1rem;
+	margin-bottom: 1rem;
+	color: white;
+}
+
+.footer-col p, .footer-col a {
+	font-size: 0.9rem;
+	color: #cddfd6;
+	text-decoration: none;
+	line-height: 1.6;
+}
+
+.footer-page{
+	display: flex;
+	text-align: center;
+	align-items: center;
+}
+
+.copyright {
+	text-align: center;
+	font-size: 0.8rem;
+	border-top: 1px solid var(--bg-news);
+	padding-top: 1.5rem;
+	margin-top: 0.5rem;
+}
+
+div#post-container {
+    max-width: 900px;
+	width: 100%;
+    background: var(--card-bg);
+    padding: 2.5rem;
+    box-shadow: 0 20px 35px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 28px;
+    margin-bottom: 1rem;
+	box-shadow: var(--s-shadow);
+}
+figure.wp-block-image.is-resized, figure.wp-block-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width: 702px){
+	body.no-scroll {
+	    overflow: hidden;
+	    height: 100vh;
+	}
+	.nav-actions {
+		display: flow;
+		position: fixed;
+		align-items: center;
+		background: blue;
+		width: 40px;
+		height: 40px;
+		border-radius: 100%;
+		justify-items: center;
+		top: 0px;
+		right: 0px;
+		gap: 0.5rem;
+	}
+	.nav-links {
+		position: fixed;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        left: -100%;
+        height: 100%;
+        overflow-y: scroll;
+        top: 0px;
+		border-top: solid 64px var(--bg-nav);
+        background: var(--bg-nav);
+        width: 100%;
+        transition: left 0.3s ease;
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.05);
+        padding: 1rem 1rem;
+        gap: 0.5rem;
+        z-index: 999;
+	}
+	.nav-links.active {
+		left: 0;
+	}
+	.nav-links li {
+		width: 100%;
+	}
+	a.nav-b {
+		min-height: 40px;
+	}
+	li.has-submenu {
+		display: contents;
+	}
+	/* Kréta + Classroom*/
+	a.nav-kreta {
+	width: 100%;
+	min-height: 40px;
+	}
+	a.G-class {
+    width: 100%;
+	min-height: 40px;
+	}
+			
+	.nav-menu-button {
+    display: block;
+	}
+	.elerhetosegek {
+            display: none;
+	}
+	.main-nav {
+		padding: 0;
+	}
+	.top-bar .container {
+    justify-content: flex-end;
+	}
+	/* Mobilban a dropdown alapból rejtett, külön class-sel nyitható */
+	.dropdown-menu {
+		position: static;
+		opacity: 1;
+		visibility: visible;
+		transform: none;
+		display: none;
+		width: calc(100% - 2rem);
+	}
+	.dropdown-menu.show {
+		display: block;
+	}
+	.has-submenu > a::after {
+		float: right;
+		margin-right: 0.5rem;
+	}
+	.nav-links li a {
+		display: flex;
+	    width: 100%;
+		justify-content: space-between;
+	}
+	.dropdown-menu li a {
+		padding-left: 1rem;
+	}
+}
+
+/* Kapszula alakú kapcsolókeret */
+.theme-switch {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background: white;
+	border-radius: 100px;
+	padding: 2px;
+	box-shadow: 0 8px 10px 0 rgba(10, 31, 68, 0.1), 0 0 1px 0 rgba(10, 31, 68, 0.08);
+	border: 1px solid rgba(23, 62, 103, 0.2);
+	width: fit-content;
+	margin: 0 auto 2.5rem auto;
+	gap: 2px;
+	box-shadow: 0 8px 10px 0 rgba(10, 31, 68, 0.1), 0 0 1px 0 rgba(10, 31, 68, 0.08);
+	border: 1px solid rgba(23, 62, 103, 0.2);
+}
+
+/* egyedi gomb stílus */
+.theme-btn {
+	background: transparent;
+	border: none;
+	border-radius: 60px;
+	height: 36px;
+	width: 36px;
+	cursor: pointer;
+	transition: all 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+}
+
+/* ikon alapstílus */
+.theme-btn i {
+	font-size: 1.5rem;
+	transition: color 0.2s ease, transform 0.1s ease;
+	color: var(--icon-inactive);
+}
+
+/* gomb szöveg (ha lenne, de most ikonok dominálnak) */
+.theme-btn span {
+	font-size: 0.9rem;
+	font-weight: 500;
+}
+
+/* hover hatás */
+.theme-btn:hover {
+	background: var(--btn-hover-bg);
+	}
+
+/* AKTÍV ÁLLAPOT: ikon SZÍNES, plusz egy finom háttérkiemelés */
+.theme-btn.active {
+	height: 40px;
+	width: 40px;
+	font-size: 12px;
+	background: white;
+	border-radius: 100%;
+	box-shadow: 0 8px 10px 0 rgba(10, 31, 68, 0.1),0 0 1px 0 rgba(10, 31, 68, 0.08);
+	border: 1px solid rgba(23, 62, 103, 0.2);
+	fill: var(--bg-body);
+}
