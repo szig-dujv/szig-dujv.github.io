@@ -62,20 +62,20 @@ class MyHeader extends HTMLElement {
         <div class="nav-menu">
             <ul class="nav-links" id=navLinks>
                 <li>
-					<a href="/szig" class="nav-b">Főoldal</a>
+					<a href="/" class="nav-b">Főoldal</a>
 				</li>
                 <li class="has-submenu">
 					<a href="#" class="nav-b">Iskolánkról</a>
 					<ul class="dropdown-menu">
 					<div class="menu-items">
-						<li><a href="/szig/tantestulet">Tantestület</a></li>
-						<li><a href="/szig/dijazottak">Díjak és Díjazottak</a></li>
+						<li><a href="/tantestulet">Tantestület</a></li>
+						<li><a href="/dijazottak">Díjak és Díjazottak</a></li>
 						<li><a href="#">Határtalanul pályázatok</a></li>
-						<li><a href="/szig/alapitvany">Alapítvány</a></li>
-						<li><a href="/szig/iszsz">ISZSZ</a></li>
-						<li><a href="/szig/dok">DÖK</a></li>
-						<li><a href="/szig/konyvtar">Könyvtár</a></li>
-						<li><a href="#">/szig/hittanoktatas</a></li>
+						<li><a href="/alapitvany">Alapítvány</a></li>
+						<li><a href="/iszsz">ISZSZ</a></li>
+						<li><a href="/dok">DÖK</a></li>
+						<li><a href="/konyvtar">Könyvtár</a></li>
+						<li><a href="/hittanoktatas">Hittanoktatás</a></li>
 						<li><a href="#">Visszatekintő</a></li>
 					</div>
 					</ul>
