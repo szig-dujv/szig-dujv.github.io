@@ -412,6 +412,7 @@ svg.nav-menu-icon {
 .menu-items {
     overflow-y: auto;
     max-height: calc(90vh - 296px);
+	scrollbar-color: var(--primary-color) transparent;
 }
 .nav-links li {
 	position: relative
