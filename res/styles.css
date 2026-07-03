@@ -489,8 +489,7 @@ div#theme-switch {
 .logo-text h1 {
 	font-size: 150%;
 	font-weight: 700;
-	color: var(--primary-green);
-	line-height: 1.3;
+	padding-inline: 1rem;
 	text-align: center;
 }
 
