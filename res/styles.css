@@ -652,11 +652,7 @@ figure.wp-block-image.is-resized, figure.wp-block-image {
     align-items: center;
 }
 
-@media screen and (max-width: 702px){
-	body.no-scroll {
-	    overflow: hidden;
-	    height: 100vh;
-	}
+@media screen and (max-width: 520px){
 	.elerhetosegek {
             display: none;
 	}
