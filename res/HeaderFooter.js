@@ -101,17 +101,7 @@ class MyFooter extends HTMLElement {
                     <h4>Dunaújvárosi Széchenyi István Gimnázium</h4>
                     <p>2400 Dunaújváros, Dózsa György út 15/A</p>
                     <p>OM azonosító: 030180</p>
-                    <p>Dunaújvárosi Tankerületi Központ</p>
                 </div>
-                <div class="footer-col">
-                    <h4>Hasznos linkek</h4>
-                    <p><a href="#">Adatkezelési tájékoztató</a></p>
-                    <p><a href="#">Felvételi információk</a></p>
-                    <p><a href="#">...</a></p>
-                </div>
-            </div>
-            <div class="copyright">
-                &copy; Dunaújvárosi Széchenyi István Gimnázium
             </div>
         </div>
     </footer>
