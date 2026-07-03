@@ -625,12 +625,14 @@ a.nav-b {
     justify-content: center;
     align-items: center;
 	border-radius: 0.5rem;
+	stroke: var(--text-primary);
 }
 
 .nav-links li a:hover,
 .nav-links li a.active {
 	color: var(--primary-color);
 	background: var(--active-bg);
+	stroke: var(--primary-color);
 }
 li {
 	font-weight: 600;
