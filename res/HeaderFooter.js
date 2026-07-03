@@ -1,15 +1,6 @@
 class MyHeader extends HTMLElement {
 	connectedCallback() {
 		this.innerHTML = `
-		<div class="nav-menu-button" id="nav-menu-button">
-				<button type="button" class="nav-menu-b" id="nav-menu-b" aria-label="Menü">
-					<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false" class="nav-menu-icon" aria-hidden="true">
-						<path d="M3 5C3 4.44772 3.44772 4 4 4H16C16.5523 4 17 4.44772 17 5C17 5.55228 16.5523 6 16 6H4C3.44772 6 3 5.55228 3 5Z"/>
-						<path d="M3 10C3 9.44772 3.44772 9 4 9H16C16.5523 9 17 9.44772 17 10C17 10.5523 16.5523 11 16 11H4C3.44772 11 3 10.5523 3 10Z"/>
-						<path d="m 3,15 c 0,-0.5523 0.44772,-1 1,-1 h 6 c 0.5523,0 1,0.4477 1,1 0,0.5523 -0.4477,1 -1,1 H 4 C 3.44772,16 3,15.5523 3,15 Z"/>
-					</svg>
-				</button>
-		</div>
 		<div class="top-bar">
         <div class="container">
 			<p class=elerhetosegek>2400 Dunaújváros, Dózsa György út 15/A <br> OM azonosító: 030180</p>
